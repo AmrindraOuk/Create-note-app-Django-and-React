@@ -1,68 +1,85 @@
-/* Container for the whole page */
-div {
-  font-family: Arial, sans-serif;
+.home-container {
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
 }
 
-/* Styles for the notes section */
-.notes-section {
-  margin-bottom: 2rem;
+.notes-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.notes-section h2 {
-  color: #333;
-  font-size: 24px;
+@media (min-width: 768px) {
+  .notes-form-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .form-section,
+  .notes-section {
+    flex: 1;
+  }
 }
 
-/* Styles for individual notes - assuming your Note component has some container element */
-.note {
-  background-color: #f9f9f9;
-  border-left: 5px solid #007bff;
-  margin: 10px 0;
-  padding: 10px 15px;
-  border-radius: 5px;
-}
-
-/* Styles for the form section */
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: auto;
-}
-
-form h2 {
-  color: #333;
-  font-size: 24px;
+h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
   margin-bottom: 20px;
 }
 
+/* Form styling */
+.form-section form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
 form label {
-  font-weight: bold;
-  margin-top: 10px;
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 form input,
 form textarea {
   width: 100%;
-  padding: 8px;
-  margin: 8px 0 16px;
+  padding: 12px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
 }
 
 form input[type="submit"] {
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 form input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+/* Notes section */
+.notes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.notes-section p {
+  color: #777;
 }

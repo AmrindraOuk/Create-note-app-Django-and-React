@@ -18,7 +18,6 @@ function Home() {
       .then((res) => res.data)
       .then((data) => {
         setNotes(data);
-        console.log(data);
       })
       .catch((err) => alert(err));
   };
@@ -47,37 +46,43 @@ function Home() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Notes</h2>
-        {notes.map((note) => (
-          <Note note={note} onDelete={deleteNote} key={note.id} />
-        ))}
+    <div className="home-container">
+      <div className="notes-form-container">
+        <div className="form-section">
+          <h2>Create a Note</h2>
+          <form onSubmit={createNote}>
+            <label htmlFor="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+            <label htmlFor="content">Content:</label>
+            <textarea
+              id="content"
+              name="content"
+              required
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            ></textarea>
+            <input type="submit" value="Add Note" />
+          </form>
+        </div>
+
+        <div className="notes-section">
+          <h2>All Notes</h2>
+          {notes.length === 0 ? (
+            <p>No notes yet.</p>
+          ) : (
+            notes.map((note) => (
+              <Note note={note} onDelete={deleteNote} key={note.id} />
+            ))
+          )}
+        </div>
       </div>
-      <h2>Create a Note</h2>
-      <form onSubmit={createNote}>
-        <label htmlFor="title">Title:</label>
-        <br />
-        <input
-          type="text"
-          id="title"
-          name="title"
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-        <label htmlFor="content">Content:</label>
-        <br />
-        <textarea
-          id="content"
-          name="content"
-          required
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <br />
-        <input type="submit" value="Submit"></input>
-      </form>
     </div>
   );
 }
