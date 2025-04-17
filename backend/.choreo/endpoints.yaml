@@ -1,8 +1,19 @@
-version: 0.1
-
+schemaVersion: "1.2"
 endpoints:
-  - name: "REST API" # You can call whatever name you want
-    port: 8000
-    type: REST # The type of the endpoint. Currently, only REST is supported.
-    networkVisibility: Public # The network visibility of the endpoint. Currently, only public is supported.
-    context: /
+  - name: rest-api-be2
+    displayName: REST API
+    service:
+      basePath: /
+      port: 8000
+    type: REST
+    networkVisibilities:
+      - Project
+      - Public
+# version: 0.1
+
+# endpoints:
+#   - name: "REST API" # You can call whatever name you want
+#     port: 8000
+#     type: REST # The type of the endpoint. Currently, only REST is supported.
+#     networkVisibility: Public # The network visibility of the endpoint. Currently, only public is supported.
+#     context: /
