@@ -27,6 +27,14 @@ class NoteDelete(generics.DestroyAPIView): # This class is used to delete a note
     def get_queryset(self): # This method is used to get the queryset for the view
         user = self.request.user # This line is used to get the user from the request
         return Note.objects.filter(author=user) # This line is used to filter the notes by the author
+    
+class NoteUpdate(generics.UpdateAPIView): # This class is used to update a note
+    serializer_class = NoteSerializer # This line is used to define the serializer for the Note model
+    permission_classes = [IsAuthenticated] # This line is used to set the permission classes for the view
+
+    def get_queryset(self): # This method is used to get the queryset for the view
+        user = self.request.user # This line is used to get the user from the request
+        return Note.objects.filter(author=user) # This line is used to filter the notes by the author
 
 
 class CreateUserView(generics.CreateAPIView): # This class is used to create a new user

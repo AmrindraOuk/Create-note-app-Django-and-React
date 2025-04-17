@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import "../styles/Form.css";
 import LoadingIndicator from "./LoadingIndicator";
@@ -16,7 +16,6 @@ function Form({ route, method }) {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log({ username, password });
 
     try {
       const res = await api.post(route, { username, password });
@@ -56,6 +55,24 @@ function Form({ route, method }) {
       <button className="form-button" type="submit">
         {name}
       </button>
+
+      <p className="form-switch">
+        {method === "login" ? (
+          <>
+            Don’t have an account?{" "}
+            <Link to="/register" className="form-link">
+              Register here
+            </Link>
+          </>
+        ) : (
+          <>
+            Already have an account?{" "}
+            <Link to="/login" className="form-link">
+              Login here
+            </Link>
+          </>
+        )}
+      </p>
     </form>
   );
 }
